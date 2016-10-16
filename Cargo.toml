@@ -1,0 +1,6 @@
+[package]
+name = "zeit-rs"
+version = "0.1.0"
+authors = ["James Munns <james.munns@gmail.com>"]
+
+[dependencies]
