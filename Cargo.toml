@@ -2,5 +2,10 @@
 name = "zeit-rs"
 version = "0.1.0"
 authors = ["James Munns <james.munns@gmail.com>"]
+description = "A CLI time tracking tool in Rust"
+license = "MIT"
+homepage = "https://github.com/jamesmunns/zeit-rs"
+repository = "https://github.com/jamesmunns/zeit-rs"
+documentation = "https://github.com/jamesmunns/zeit-rs"
 
 [dependencies]
