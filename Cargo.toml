@@ -1,6 +1,6 @@
 [package]
 name = "zeit-rs"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["James Munns <james.munns@gmail.com>"]
 description = "A CLI time tracking tool in Rust"
 license = "MIT"
@@ -9,3 +9,7 @@ repository = "https://github.com/jamesmunns/zeit-rs"
 documentation = "https://github.com/jamesmunns/zeit-rs"
 
 [dependencies]
+clap = "2"
+
+[[bin]]
+name = "zeit"
