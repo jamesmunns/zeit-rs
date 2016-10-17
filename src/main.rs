@@ -1,3 +1,8 @@
+#[macro_use]
+extern crate clap;
+
+mod cli;
+
 fn main() {
-    println!("Hallo, welt!");
+    cli::parse_cli();
 }
