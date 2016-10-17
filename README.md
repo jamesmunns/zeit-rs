@@ -13,7 +13,7 @@ cargo install zeit-rs
 
 ## Usage
 
-None, yet. Heres the help page anyway (all you can do is initialize some working dirs/files
+None, yet. Heres the help page anyway (all you can do is initialize some working dirs/files)
 
 ```
 zeit: A CLI time tracking tool 0.1.2
