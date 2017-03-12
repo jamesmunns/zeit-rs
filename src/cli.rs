@@ -1,6 +1,7 @@
-use clap;
-
 use clap::{Arg, App, SubCommand};
+use pomodoro;
+
+use std::io::prelude::*;
 
 pub fn parse_cli() {
     let matches = App::new("zeit: A CLI time tracking tool")
@@ -45,7 +46,10 @@ fn init() {
         }
     }
 
-    let config_file = working_dir.join(Path::new("zeit.toml"));
+    //
+    // Create config file
+    //
+    let config_file = working_dir.join(Path::new("config.toml"));
 
     println!("Creating config file: {:?}", config_file);
 
@@ -64,4 +68,33 @@ fn init() {
             }
         }
     }
+
+    //
+    // Create history file
+    //
+    let history_file = working_dir.join(Path::new("history.toml"));
+
+    println!("Creating history file: {:?}", history_file);
+
+    // TODO: Initialize with empty history?
+    match fs::File::create(&history_file) {
+        Ok(mut hfile) => {
+            let blank = pomodoro::Pomodoros::new().to_string().unwrap();
+            hfile.write_all(&blank.into_bytes());
+            println!("Created successfully");
+        },
+        Err(err) => {
+            // NOTE: This doesn't make sense for file creation
+            match err.kind() {
+                ErrorKind::AlreadyExists => {
+                    println!("History file already exists.");
+                }
+                _ => {
+                    panic!("Failed to create history file! {:?}", err.kind());
+                }
+            }
+        }
+    }
+
+
 }

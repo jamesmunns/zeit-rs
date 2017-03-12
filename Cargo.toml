@@ -10,9 +10,14 @@ documentation = "https://github.com/jamesmunns/zeit-rs"
 
 [dependencies]
 clap = "2"
-toml = "0.2"
 log = "0.3"
 log4rs = "0.5"
+
+toml = "0.3"
+serde = "0.9"
+serde_derive = "0.9"
+chrono = { version = "0.3", features = ["serde"] }
+uuid = { version = "0.4", features = ["serde", "v4"] }
 
 [[bin]]
 name = "zeit"
