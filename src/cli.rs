@@ -1,4 +1,4 @@
-use clap::{Arg, App, SubCommand};
+use clap::{App, SubCommand};
 use pomodoro;
 
 use std::io::prelude::*;
@@ -76,13 +76,14 @@ fn init() {
 
     println!("Creating history file: {:?}", history_file);
 
-    // TODO: Initialize with empty history?
     match fs::File::create(&history_file) {
         Ok(mut hfile) => {
-            let blank = pomodoro::Pomodoros::new().to_string().unwrap();
-            hfile.write_all(&blank.into_bytes());
+            let blank = pomodoro::Pomodoros::new()
+                .to_string()
+                .expect("How the hell did serializing an empty history object fail!?!");
+            let _ = hfile.write_all(&blank.into_bytes()).expect("Failed to write to history file");
             println!("Created successfully");
-        },
+        }
         Err(err) => {
             // NOTE: This doesn't make sense for file creation
             match err.kind() {
